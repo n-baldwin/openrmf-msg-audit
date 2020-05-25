@@ -9,35 +9,38 @@ namespace tests.Models
         [Fact]
         public void Test_NewAuditIsValid()
         {
-            Audit aud = new Audit();
-            Assert.True(aud != null);
-            Assert.True(aud.auditId != Guid.Empty);
+            Audit audit = new Audit();
+
+            // Testing
+            Assert.False(audit == null);
         }
     
         [Fact]
         public void Test_AuditWithDataIsValid()
         {
-            Audit aud = new Audit();
-            aud.program = "Save";
-            aud.created = DateTime.Now;
-            aud.action = "edit";
-            aud.userid = Guid.NewGuid().ToString();
-            aud.username = "my.username";
-            aud.fullname = "My F. Name";
-            aud.email = "dale.bingham@cingulara.com";
-            aud.url = "https://www.openrmf.io";
-            aud.message = "This is a test";
+            Audit audit = new Audit();
 
-            Assert.True(aud != null);
-            Assert.True(aud.auditId != Guid.Empty);
-            Assert.True(!string.IsNullOrEmpty(aud.program));
-            Assert.True(!string.IsNullOrEmpty(aud.action));
-            Assert.True(!string.IsNullOrEmpty(aud.userid));
-            Assert.True(!string.IsNullOrEmpty(aud.username));
-            Assert.True(!string.IsNullOrEmpty(aud.fullname));
-            Assert.True(!string.IsNullOrEmpty(aud.email));
-            Assert.True(!string.IsNullOrEmpty(aud.url));
-            Assert.True(!string.IsNullOrEmpty(aud.message));
+            audit.program = "Save";
+            audit.created = DateTime.Now;
+            audit.action = "edit";
+            audit.userid = Guid.NewGuid().ToString();
+            audit.username = "my.username";
+            audit.fullname = "My F. Name";
+            audit.email = "dale.bingham@cingulara.com";
+            audit.url = "https://www.openrmf.io";
+            audit.message = "This is a test";
+
+            // Testing
+            Assert.True(audit.program == "Save");
+            Assert.True(audit.action == "edit");
+            Assert.True(audit.username == "my.username");
+            Assert.True(audit.fullname == "My F. Name");
+            Assert.True(audit.email == "dale.bingham@cingulara.com");
+            Assert.True(audit.url == "https://www.openrmf.io");
+            Assert.True(audit.message == "This is a test");
+            Assert.False(audit.created == null);
+            Assert.False(audit.userid == null);
+            Assert.False(audit.auditId == null);
         }
     }
 }
